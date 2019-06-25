@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakebook.CoreUI", "Fakebook.CoreUI\Fakebook.CoreUI.csproj", "{7A716193-9BB5-4BF7-861F-04110465D8AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fakebook.CoreUI", "Fakebook.CoreUI\Fakebook.CoreUI.csproj", "{7A716193-9BB5-4BF7-861F-04110465D8AE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{CD7DE4EA-CE13-4D4A-AEF2-7944FA291649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakebook.Microservices.Person.Api", "Microservices\Fakebook.Microservices.Person.Api\Fakebook.Microservices.Person.Api.csproj", "{CB4CAAD4-C26F-4104-BCB4-66CDFCB55702}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fakebook.Microservices.Person.Api", "Microservices\Fakebook.Microservices.Person.Api\Fakebook.Microservices.Person.Api.csproj", "{CB4CAAD4-C26F-4104-BCB4-66CDFCB55702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakebook.Microservices.Social.Api", "Microservices\Fakebook.Microservices.Social.Api\Fakebook.Microservices.Social.Api.csproj", "{BD2E146C-BB93-463C-B4E7-8590C68A1851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fakebook.Microservices.Social.Api", "Microservices\Fakebook.Microservices.Social.Api\Fakebook.Microservices.Social.Api.csproj", "{BD2E146C-BB93-463C-B4E7-8590C68A1851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakebook.ENTITY", "Fakebook.ENTITY\Fakebook.ENTITY.csproj", "{593BD277-0BC4-407A-BD59-2955FE99D300}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{BD2E146C-BB93-463C-B4E7-8590C68A1851}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD2E146C-BB93-463C-B4E7-8590C68A1851}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD2E146C-BB93-463C-B4E7-8590C68A1851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593BD277-0BC4-407A-BD59-2955FE99D300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593BD277-0BC4-407A-BD59-2955FE99D300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593BD277-0BC4-407A-BD59-2955FE99D300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593BD277-0BC4-407A-BD59-2955FE99D300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
