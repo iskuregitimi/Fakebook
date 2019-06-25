@@ -13,5 +13,11 @@ namespace Fakebook.CoreUI.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Register(PeopleModel model)
+        {
+            return View();
+        }
     }
 }
