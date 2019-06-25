@@ -44,7 +44,7 @@ namespace FakeBookUI.Controllers
         {
 
             HttpHelper.SendRequestModel<PeopleModel>("http://localhost:14247/api/", "Login/registerPeople", peopleModel, Method.POST);
-            return View();
+            return RedirectToAction("Index","Home");
         }
 
 

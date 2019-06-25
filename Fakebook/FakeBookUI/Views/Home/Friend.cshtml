@@ -1,0 +1,27 @@
+﻿@using FakeBookUI.Models
+
+@model List<FriendModel>
+
+@{
+    int takipçi = 0;
+    int takipediln = 0;
+}
+@foreach (var item in Model)
+{
+    takipçi += item.FriendRequest;
+
+    takipediln += item.incomingFriendRequest;
+}
+<ul class="user-fw-status">
+        <li>
+            <h4>Following</h4>
+            <span>takipçi</span>
+        </li>
+        <li>
+            <h4>Followers</h4>
+            <span>takipediln</span>
+        </li>
+        <li>
+            <a href="#" title="">View Profile</a>
+        </li>
+    </ul>
