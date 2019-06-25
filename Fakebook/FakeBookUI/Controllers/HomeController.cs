@@ -46,7 +46,7 @@ namespace FakeBookUI.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
+        }sad
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
