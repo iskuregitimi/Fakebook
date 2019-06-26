@@ -31,6 +31,13 @@ namespace Fakebook.CoreUI
             });
 
 
+            // Session ve http helper kullanımı için gerekli
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<HttpHelper>();
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -48,6 +55,9 @@ namespace Fakebook.CoreUI
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            // Session kullanımı için gerekli. 
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
