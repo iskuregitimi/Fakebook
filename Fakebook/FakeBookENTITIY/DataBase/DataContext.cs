@@ -11,11 +11,11 @@ namespace FakeBookENTITIY.DataBase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.;Database=FakeBook; user id=sa; password=1234");
+            optionsBuilder.UseSqlServer(@"Server=.;Database=FakeBook; user id=sa; password=123");
         }
 
-        public DbSet<Message> Messages { get; set; }
-        public DbSet<FriendTable> FriendTables { get; set; }
+        public DbSet<Message> Message { get; set; }
+        public DbSet<FriendTable> FriendTable { get; set; }
         public DbSet<People> People{ get; set; }
         public DbSet<PostTable> PostTable { get; set; }
 

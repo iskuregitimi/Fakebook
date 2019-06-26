@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fakebook.CoreUI.Models;
 using FakeBook;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 
@@ -26,18 +27,18 @@ namespace FakeBookUI.Controllers
             if (people1!=null)
             {
                 return RedirectToAction("Index", "Home");
+
+              
             }
 
+            string name = people1.Name;
+            HttpContext.Session.SetString("People", name);
             return View();
 
         }
 
 
-        public IActionResult Register()
-        {
-            return View();
-        }
-
+     
 
         [HttpPost]
         public IActionResult Register(PeopleModel peopleModel)

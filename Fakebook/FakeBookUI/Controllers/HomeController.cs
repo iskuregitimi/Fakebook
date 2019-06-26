@@ -10,6 +10,7 @@ using FakeBookUI.Models;
 using FakeBook;
 using RestSharp;
 using RabbitMQ.Client.Impl;
+using Microsoft.AspNetCore.Http;
 
 namespace FakeBookUI.Controllers
 {
@@ -21,8 +22,8 @@ namespace FakeBookUI.Controllers
     
             List<FriendModel> friends = new List<FriendModel>();
            post = HttpHelper.SendRequest<List<PostModel>>("http://localhost:14258/api/", "Post/GetPost", Method.GET);
-           
-          
+           friends =HttpHelper.SendRequest<List<FriendModel>>("http://localhost:14258/api/", "Friend/GetFriends", Method.GET);
+
             int count = 0;
             foreach (var item in friends)
             {
@@ -30,23 +31,23 @@ namespace FakeBookUI.Controllers
 
             }
             string coo = count.ToString();
-            TempData["Count"] = "sadas";
-          
-            return View(post);
+            ViewData["Count"] = count.ToString();
+            ViewBag.sessionp = HttpContext.Session.GetString("People");
+                return View(post);
         }
 
         public IActionResult Friend()
         {
             List<FriendModel> friends = new List<FriendModel>();
             friends = HttpHelper.SendRequest<List<FriendModel>>("http://localhost:14258/api/", "Friend/GetFriends", Method.GET);
-            Session["seko"]="asd";
+            
 
             return View(friends);
         }
         public IActionResult Privacy()
         {
             return View();
-        }sad
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

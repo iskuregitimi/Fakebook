@@ -5,19 +5,22 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\Partial\**" />
+    <Content Remove="Views\Partial\**" />
+    <EmbeddedResource Remove="Views\Partial\**" />
+    <None Remove="Views\Partial\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Redis.Core" Version="1.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.0" />
     <PackageReference Include="RestSharp" Version="106.6.9" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Views\Partial\" />
   </ItemGroup>
 
 </Project>

@@ -14,7 +14,7 @@ namespace FakeBookUI.Controllers
         [HttpPost]
         public IActionResult InsertPost(PostModel postModel)
         {
-            HttpHelper.SendRequest<PostModel>("http://localhost:14258/api/", "Post/InsertPost", Method.POST);
+            HttpHelper.SendRequestModel<PostModel>("http://localhost:14258/api/", "Post/InsertPost", postModel, Method.POST);
             return RedirectToAction("Index","Home");
         }
     }

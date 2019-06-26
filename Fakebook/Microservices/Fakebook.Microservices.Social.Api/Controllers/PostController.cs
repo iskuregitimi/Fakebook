@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Fakebook.Microservices.Social.Api.Models;
 using FakeBookENTITIY.DataBase;
 using FakeBookENTITIY.EntityFramework;
 using Microsoft.AspNetCore.Http;
@@ -24,8 +25,14 @@ namespace Fakebook.Microservices.Social.Api.Controllers
 
         }
         [HttpPost]
-        public void InsertPost(PostTable postTable)
+        public void InsertPost(PostModel model)
         {
+            PostTable postTable = new PostTable
+            {
+                Detail = model.Detail,
+                PostTitle = model.PostTitle,
+                SenderID = model.SenderID
+            };
             repo_post.Insert(postTable);
         }
     }
