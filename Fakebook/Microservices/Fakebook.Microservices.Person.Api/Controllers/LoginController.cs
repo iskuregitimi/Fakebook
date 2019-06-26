@@ -8,21 +8,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fakebook.Microservices.Person.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
         Repository<People> repo = new Repository<People>();
 
         [HttpGet]
-        public People GetPeople(People people)
+        public People GetUser(People people)
         {
             People p = repo.Find(x => x.ID == people.ID);
             return p;
         }
 
         [HttpPost]
-        public void registerPeople(People people)
+        public void registerUser(People people)
         {
             People peop = new People
             {
