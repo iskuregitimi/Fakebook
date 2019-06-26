@@ -15,5 +15,6 @@ namespace Fakebook.Microservices.Person.Api.DataBase
 
 		}
 		public DbSet<Persons> Persons { get; set; }
+		public DbSet<Logs> Logs { get; set; }
 	}
 }

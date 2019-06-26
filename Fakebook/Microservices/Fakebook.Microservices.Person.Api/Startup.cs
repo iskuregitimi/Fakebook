@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Fakebook.Microservices.Person.Api.DataBase;
+using Fakebook.Microservices.Person.Api.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,11 +33,17 @@ namespace Fakebook.Microservices.Person.Api
 				c.SwaggerDoc("v1", new Info { Title = "TestAPI", Version = "V1" });
 			});
 
+
+
+            
+
+
+
 			var connection = @"Server=DESKTOP-SKLKMJ1\SQLEXPRESS;Database=Fakebook;Trusted_Connection=True;MultipleActiveResultSets=true";
 			services.AddDbContext<FakebookDataContext>
 				(options => options.UseSqlServer(connection));
-
-
+			services.AddScoped<ActionFilter>();
+			//services.AddScoped<Iproduct, classgelicek>
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 
@@ -55,6 +62,9 @@ namespace Fakebook.Microservices.Person.Api
 			});
 
 			app.UseMvc();
-        }
+
+			
+
+		}
     }
 }
