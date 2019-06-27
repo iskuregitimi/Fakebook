@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-
+using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -10,26 +10,21 @@ namespace FakeBook
 {
     public class HttpHelper
     {
-        //public static T SendRequest<T>(string host, string resource, Method httpMethod)
-        // where T : new()
-        //{
-        //    var client = new RestClient(host);
-        //    var request = new RestRequest(resource, httpMethod);
-
-        //    var response2 = client.Execute<T>(request);
-
-        //    if (response2.StatusCode != System.Net.HttpStatusCode.OK)
-        //    {
-        //        throw response2.ErrorException;
-        //    }
-
-        //    return response2.Data;
-        //}
+        ISession _session;
+        public HttpHelper(IHttpContextAccessor httpContextAccessor)
+        {
+            _session = httpContextAccessor.HttpContext.Session;
+        }
+        public string SendRequest()
+        {
+            var d = _session.GetString("Deneme");
+            return "";
+        }
         public static T SendRequest<T>(string host, string resource, Method httpMethod) where T : new()
         {
             var client = new RestClient(host);
             var request = new RestRequest(resource, httpMethod);
-
+            
             var response2 = client.Execute<T>(request);
             return response2.Data;
         }

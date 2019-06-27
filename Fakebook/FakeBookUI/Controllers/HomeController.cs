@@ -16,6 +16,11 @@ namespace FakeBookUI.Controllers
 {
     public class HomeController : Controller
     {
+        HttpHelper _helper;
+        public HomeController(HttpHelper helper)
+        {
+            _helper = helper;
+        }
         public IActionResult Index()
         {
             List<PostModel> post = new List<PostModel>();

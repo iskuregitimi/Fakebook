@@ -1,7 +1,10 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Fakebook.CoreUI;
 using Fakebook.CoreUI.Models;
 using FakeBook;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +15,12 @@ namespace FakeBookUI.Controllers
 {
     public class LoginController : Controller
     {
+        HttpHelper _httpHelper;
+        public LoginController(HttpHelper httpHelper)
+        {
+            _httpHelper = httpHelper;
+
+        }
         public IActionResult Index()
         {
             return View();
@@ -27,12 +36,15 @@ namespace FakeBookUI.Controllers
             if (people1!=null)
             {
                 return RedirectToAction("Index", "Home");
-
+                
+       
+            HttpContext.Session.SetObjectAsJson("user", people1);
+           ViewBag.username = people1.Name.ToString();
+            _httpHelper.SendRequest();
+                ViewBag.userName = people1.Name;
+        
               
             }
-
-            string name = people1.Name;
-            HttpContext.Session.SetString("People", name);
             return View();
 
         }
