@@ -35,14 +35,14 @@ namespace Fakebook.Microservices.Person.Api
 
 
 
-            
+			//services.AddMvc().AddSessionStateTempDataProvider();
+			services.AddScoped<ActionFilter>();
+			services.AddScoped<ResultFilter>();
 
-
-
-			var connection = @"Server=DESKTOP-SKLKMJ1\SQLEXPRESS;Database=Fakebook;Trusted_Connection=True;MultipleActiveResultSets=true";
+			var connection = @"Server=DESKTOP-SKLKMJ1\SQLEXPRESS;Database=Fakebook;Trusted_Connection=True;MultipleActiveResultSets=true;";
 			services.AddDbContext<FakebookDataContext>
 				(options => options.UseSqlServer(connection));
-			services.AddScoped<ActionFilter>();
+			
 			//services.AddScoped<Iproduct, classgelicek>
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
@@ -54,16 +54,13 @@ namespace Fakebook.Microservices.Person.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+			//app.UseSession();
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>
 			{
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "post API V1");
 			});
-
 			app.UseMvc();
-
-			
 
 		}
     }

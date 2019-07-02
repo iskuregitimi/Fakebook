@@ -11,48 +11,72 @@ namespace Fakebook.Microservices.Person.Api.Filters
 
 
 
-	public class ActionFilter : ActionFilterAttribute ,IActionFilter
+	public class ActionFilter : IActionFilter
 	{
-
 		FakebookDataContext _fakebookDataContext;
-
 		public ActionFilter(FakebookDataContext fakebookDataContext)
 		{
 			_fakebookDataContext = fakebookDataContext;
 		}
-
-
 		//action çalıştıktan sonra
 		public void OnActionExecuted(ActionExecutedContext context)
 		{
-			_fakebookDataContext.Logs.Add(new Logs()
+
+			var logs = new Logs()
 			{
-				ID = 1,
-				UserName = string.Empty,
-				ActionName = "",
-				ControllerName = "",
+				Id=1,
+				UserName = "fadile",
+				ActionName = "kaydet",
+				ControllerName = "dfw",
 				Date = DateTime.Now,
-				information = "OnActionExecuted",
+				Information = "bilgi",
+			};
+			_fakebookDataContext.Logs.Add(logs);
+			_fakebookDataContext.SaveChanges();
 
 
-			});
+
+			//var result=_fakebookDataContext.Logs.Add(new Logs()
+			//{
+			//	UserName = string.Empty,
+			//	ActionName = "",
+			//	ControllerName = "",
+			//	Date = DateTime.Now,
+			//	information = "OnActionExecuted",
+			//});
+			//_fakebookDataContext.SaveChanges();
+
+
+			//var author = new Author { FirstName = "William", LastName = "Shakespeare" };
+			//context.Add<Author>(author);
+			//context.SaveChanges();
 		}
 		//action çalışmadan hemen önce
 		public void OnActionExecuting(ActionExecutingContext context)
 		{
 
 
-			_fakebookDataContext.Logs.Add(new Logs()
+			Logs logs = new Logs()
 			{
-				ID=1,
-				UserName = string.Empty,
-				ActionName = "",
-				ControllerName = "",
+				Id = 1,
+				UserName = "fadile",
+				ActionName = "kaydet",
+				ControllerName = "dfw",
 				Date = DateTime.Now,
-				information = "OnActionExecuting",
+				Information = "bilgi",
+			};
+			_fakebookDataContext.Logs.Add(logs);
+			_fakebookDataContext.SaveChanges();
 
-
-			});
+			//_fakebookDataContext.Logs.Add(new Logs()
+			//{		
+			//	UserName = string.Empty,
+			//	ActionName = "",
+			//	ControllerName = "",
+			//	Date = DateTime.Now,
+			//	information = "OnActionExecuting",
+			//});
+			//_fakebookDataContext.SaveChanges();
 		}
 	}
 }

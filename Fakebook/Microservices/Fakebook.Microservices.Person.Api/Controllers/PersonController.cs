@@ -24,9 +24,11 @@ namespace Fakebook.Microservices.Person.Api.Controllers
 			_fakebookDataContext = fakebookDataContext;
 		}
 
-		[TypeFilter(typeof(ActionFilter))]
-		[HttpGet]
+
 		//[ActionFilter]
+		//[ServiceFilter(typeof(ResultFilter))]
+		//[ServiceFilter(typeof(ActionFilter))]
+		[HttpGet]	
 		public List<Persons> GetPersonList()
 		{
 			return _fakebookDataContext.Persons.ToList();
