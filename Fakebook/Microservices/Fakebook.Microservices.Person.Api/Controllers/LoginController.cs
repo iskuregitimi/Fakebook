@@ -15,7 +15,7 @@ namespace Fakebook.Microservices.Person.Api.Controllers
     public class LoginController : ControllerBase
     {
         Repository<People> repo_people = new Repository<People>();
-
+        Repository<User_T> repo_user = new Repository<User_T>();
         [HttpPost]
         public PeopleModel GetPeople(PeopleModel people)
         {
@@ -31,7 +31,19 @@ namespace Fakebook.Microservices.Person.Api.Controllers
             };
             return peop;
         }
+        [HttpPost]
+        public User_T Token(PeopleModel people)
+        {
+            User_T user_T = new User_T
+            {
+                PeopleID = people.ID,
+                Token = "T-" + Guid.NewGuid().ToString()
+            };
+            repo_user.Insert(user_T);
+           return repo_user.Find(x => x.PeopleID == people.ID);
 
+        }
+     
         [HttpPost]
         public void registerPeople(PeopleModel people)
         {

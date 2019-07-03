@@ -15,6 +15,21 @@ namespace Fakebook.Microservices.Social.Api.Controllers
     {
 
         Repository<Message> repo_message = new Repository<Message>();
+        [HttpGet]
+        public List<Message> Messages()
+        {
+            return repo_message.List();
+        }
+        [HttpPost]
+        public List<Message> GetMessages(Message message)
+        {
+            return repo_message.List(x=>x.ReceiverID==message.ReceiverID);
+        }
+        [HttpPost]
+        public Message GetMessageDetail(int id)
+        {
+            return repo_message.Find(x => x.ID == id);
+        }
         [HttpPost]
         public void SendMessage(Message message)
         {

@@ -9,7 +9,9 @@ namespace FakeBookUI.Models
     {
 
         public List<PostModel> Post{ get; set; }
-        public int sayi { get; set; }
+       
+
         public List<FriendModel> Friend { get; set; }
+        public List<MessageModel> Messages { get; set; }
     }
 }
