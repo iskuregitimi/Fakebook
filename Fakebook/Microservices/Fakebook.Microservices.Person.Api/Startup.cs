@@ -34,14 +34,14 @@ namespace Fakebook.Microservices.Person.Api
 			});
 
 
-
+			services.AddDbContext<FakebookDataContext>(x => x.UseSqlServer(Configuration.GetSection("ConnectionString")["DefaultConnection"]));
 			//services.AddMvc().AddSessionStateTempDataProvider();
 			services.AddScoped<ActionFilter>();
 			services.AddScoped<ResultFilter>();
 
-			var connection = @"Server=DESKTOP-SKLKMJ1\SQLEXPRESS;Database=Fakebook;Trusted_Connection=True;MultipleActiveResultSets=true;";
-			services.AddDbContext<FakebookDataContext>
-				(options => options.UseSqlServer(connection));
+			//var connection = @"Server=DESKTOP-SKLKMJ1\SQLEXPRESS;Database=Fakebook;Trusted_Connection=True;MultipleActiveResultSets=true;";
+			//services.AddDbContext<FakebookDataContext>
+			//	(options => options.UseSqlServer(connection));
 			
 			//services.AddScoped<Iproduct, classgelicek>
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
