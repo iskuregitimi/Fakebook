@@ -41,8 +41,7 @@ namespace Fakebook.Microservices.Person.Api.Controllers
 
 			Persons person = _fakebookDataContext.Persons.Where(x => x.Email == Email && x.Password == Password).Select(y => new Persons
 			{
-				
-
+			
 				PersonID = y.PersonID,
 				Email = Email,
 				Password = Password,

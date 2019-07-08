@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Fakebook.CoreUI.Models;
 using RestSharp;
+using Microsoft.AspNetCore.Http;
 
 namespace Fakebook.CoreUI.Controllers
 {
@@ -36,18 +37,25 @@ namespace Fakebook.CoreUI.Controllers
 			var person = HttpHelper.GetMethod<PersonModel>("http://localhost:14247/", "api/Person/Login/", Method.GET, Email, Password);
 			if (person.Password == Password)
 			{
-				
+				HttpContext.Session.SetString("Email", Email);
 				return RedirectToAction("Index", "Home");
 			}
 			return View();
 
-		
 		}
 
-
-		public ActionResult SignUp()
+		[HttpPost]
+		public ActionResult Register(PersonModel person)
 		{
-			return View();
+			
+			var client = new RestClient("http://localhost:14247/");
+			var request = new RestRequest("api/Person/AddPerson/", Method.POST);
+			request.AddHeader("Content-Type", "application/json");
+			request.AddJsonBody(person);
+			client.Execute(request);
+		
+			return RedirectToAction("Index", "Home");
+
 		}
 
 
